@@ -55,15 +55,14 @@ return [
     |
     */
 
-    /*'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
-    ],*/
     'from' => [
-        'address' => 'ranxin1022@yeah.net',
-        'name' => '包子妹',
+        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+        'name' => env('MAIL_FROM_NAME', '包子妹'),
     ],
-
+    'to' => [
+        'address' => env('MAIL_TO_ADDRESS', 'hello@example.com'),
+        'name' => env('MAIL_TO_NAME', '包子妹'),
+    ],
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol

@@ -48,8 +48,8 @@
             //return $this->response->errorBadRequest();
             if($request->isMethod('get'))
             {
-                $to = 'rachel.ran@jfz.com';
-                Mail::to($to)->send(new AlarmMail());
+                $to = ['address' =>'rachel.ran@jfz.com', 'name'=>'rachel'];
+                Mail::send(new AlarmMail());
             }
         }
     }
