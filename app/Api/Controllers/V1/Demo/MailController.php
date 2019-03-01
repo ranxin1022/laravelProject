@@ -9,11 +9,13 @@
     namespace App\Api\Controllers\V1\Demo;
 
 
+    use App\Mail\AlarmMail;
     use Dingo\Api\Routing\Helpers;
     use Illuminate\Http\Request;
     use Illuminate\Routing\Controller;
+    use Illuminate\Support\Facades\Mail;
 
-    class MemberController extends Controller
+    class MailController extends Controller
     {
         use Helpers;
         
@@ -25,11 +27,11 @@
     
         /**
          * @SWG\Get(
-         *     path="/demo/member/get",
+         *     path="/demo/mail",
          *     summary="单用户详细信息",
-         *     tags={"member"},
+         *     tags={"mail"},
          *     description="返回单个用户的详细信息",
-         *     operationId="demo.member.get",
+         *     operationId="demo.mail",
          *     produces={"application/json"},
          *
          *     @SWG\Response(
@@ -40,15 +42,14 @@
          *     )
          * )
          */
-        public function get(Request $request)
+        public function sendEmail(Request $request)
         {
             //return $this->response->error ("this is an error", 404);
             //return $this->response->errorBadRequest();
             if($request->isMethod('get'))
             {
-                echo 'hah get adssfd 123';
-                //dd($request);
-                //echo 'hah get adssfd 456';
+                $to = 'rachel.ran@jfz.com';
+                Mail::to($to)->send(new AlarmMail());
             }
         }
     }

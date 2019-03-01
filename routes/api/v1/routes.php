@@ -9,7 +9,7 @@
 use Dingo\Api\Routing\Router;
 
 /** @var Dingo\Api\Routing\Router $api*/
-$api->version('v1', ['namespace' => 'App\Api\Controllers\V1'], function (Router $api) {
+$api->version('v1', ['namespace' => 'App\Api\Controllers\V1'/*, 'middleware'=>'api.common'*/], function (Router $api) {
     $api->group(['namespace' => 'Insurance', 'prefix' =>'company'], function(Router $api){
         $api->get('get', 'CompanyController@get');
     });
@@ -21,8 +21,11 @@ $api->version('v1', ['namespace' => 'App\Api\Controllers\V1'], function (Router 
             ]
         );
         $api->get('member/get', 'MemberController@get');
+        $api->get('mail', 'MailController@sendEmail');
     });
     
     /*require __DIR__ . '/../common/user.php';
     require __DIR__ . '/../common/post.php';*/
+    
+    
 });

@@ -229,6 +229,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Fractal' => Cyvelnet\Laravel5Fractal\Facades\Fractal::class,
+        'Hello' => App\Http\Controllers\FacadeController::class,
     ],
 
 ];

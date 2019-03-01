@@ -78,5 +78,16 @@ Route::get('about', function (){
 Route::get('company',  'CompanyController@get');
 Route::get('component', 'ComponentController@index');
     
-    Route::get('componentget', 'ComponentController@get');
-    Route::get('componentfind', 'ComponentController@find');
+Route::get('componentget', 'ComponentController@get');
+Route::get('componentfind', 'ComponentController@find');
+
+Route::get('login', 'API\UserController@login')->name('login');
+Route::get('register', 'API\UserController@register')->name('register');
+
+
+Route::group(['middleware' => 'auth:api'], function(){
+    Route::post('details', 'API\UserController@details');
+});
+Route::get('home', 'HomeController@home');
+Route::get('index', 'HomeController@index');
+Route::post('form', 'HomeController@form')->name('form.submit');
