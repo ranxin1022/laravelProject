@@ -35,7 +35,7 @@ class Kernel extends HttpKernel
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \App\Http\Middleware\VerifyCsrfToken::class,
+            //\App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
@@ -44,7 +44,8 @@ class Kernel extends HttpKernel
             'bindings',
         ],
         'api.common' =>[
-            'client',
+            //'requestLogger',//记录请求日志
+            'client',//校验access token
         ]
     ];
 
@@ -64,5 +65,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'age' => \App\Http\Middleware\CheckAge::class,
         'client'=> CheckClientCredentials::class,
+        'requestLogger' => \App\Http\Middleware\RequestLogger::class,
     ];
 }
