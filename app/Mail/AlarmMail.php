@@ -28,6 +28,8 @@ class AlarmMail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.alarm');
+        //return $this->view('emails.alarm');
+        return $this->markdown('alarm');
+    
     }
 }

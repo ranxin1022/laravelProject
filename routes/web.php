@@ -75,7 +75,7 @@ Route::get('about', function (){
     return view('about');
 });
 
-Route::get('company',  'CompanyController@get');
+//Route::get('company',  'CompanyController@get');
 Route::get('component', 'ComponentController@index');
     
 Route::get('componentget', 'ComponentController@get');
@@ -91,3 +91,29 @@ Route::group(['middleware' => 'auth:api'], function(){
 Route::get('home', 'HomeController@home');
 Route::get('index', 'HomeController@index');
 Route::post('form', 'HomeController@form')->name('form.submit');
+Route::get('form', function () {
+    return view('form');
+});
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/passport', function () {
+    return view('passport');
+});
+
+/*Route::middleware('auth:api')->get('/user', function (Request $request) {
+    //$user = \Auth::guard('api')->user();
+    $user = \Auth::user()->email;
+    //return response()->json($user);
+    return $user;
+});*/
+
+Route::post('login', 'Auth\LoginController@login')->middleware('auth:api');
+Route::get('/user', function (Request $request) {
+    $user = \Auth::guard('api')->user();
+    //$user = \Auth::user()->email;
+    //return response()->json($user);
+    return $user;
+});
