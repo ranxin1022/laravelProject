@@ -81,8 +81,8 @@ Route::get('component', 'ComponentController@index');
 Route::get('componentget', 'ComponentController@get');
 Route::get('componentfind', 'ComponentController@find');
 
-Route::get('login', 'API\UserController@login')->name('login');
-Route::get('register', 'API\UserController@register')->name('register');
+//Route::get('login', 'API\UserController@login')->name('login');
+//Route::get('register', 'API\UserController@register')->name('register');
 
 
 Route::group(['middleware' => 'auth:api'], function(){
@@ -110,10 +110,10 @@ Route::get('/passport', function () {
     return $user;
 });*/
 
-Route::post('login', 'Auth\LoginController@login')->middleware('auth:api');
+//Route::post('login', 'Auth\LoginController@login')->middleware('auth:api');
 Route::get('/user', function (Request $request) {
-    $user = \Auth::guard('api')->user();
-    //$user = \Auth::user()->email;
+    //$user = \Auth::guard('api')->user();
+    $user = \Auth::user()->email;
     //return response()->json($user);
     return $user;
 });

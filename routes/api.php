@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 //http://www.laravelproject.net/api/company
-Route::get('company',  'V1\Insurance\CompanyController@get');
+//Route::get('company',  'V1\Insurance\CompanyController@get');
     /** @var Dingo\Api\Routing\Router $api*/
     $api = app('Dingo\Api\Routing\Router');
     require_once __DIR__.'/api/v1/routes.php';

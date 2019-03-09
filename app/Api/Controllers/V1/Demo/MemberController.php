@@ -12,6 +12,7 @@
     use Dingo\Api\Routing\Helpers;
     use Illuminate\Http\Request;
     use Illuminate\Routing\Controller;
+    use GuzzleHttp\Client;
 
     class MemberController extends Controller
     {
@@ -46,9 +47,19 @@
             //return $this->response->errorBadRequest();
             if($request->isMethod('get'))
             {
-                echo 'hah get adssfd 123';
+                //echo 'hah get adssfd 123';
                 //dd($request);
                 //echo 'hah get adssfd 456';
+                
+                $client = new Client();
+                $res = $client->request('GET', 'https://www.baidu.com',['auth'=>['user','pass']]);
+                echo $res->getStatusCode();
+    
+                $request = new \GuzzleHttp\Psr7\Request('GET', 'http://httpbin.org');
+                $promise = $client->sendAsync($request)->then(function ($response) {
+                    echo 'I completed! ' . $response->getBody();
+                });
+                $promise->wait();
             }
         }
     }
