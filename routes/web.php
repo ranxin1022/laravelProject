@@ -102,6 +102,7 @@ Auth::routes();
 Route::get('/passport', function () {
     return view('passport');
 });
+#Route::get('/wechat', 'WeChatController@serve');
 
 /*Route::middleware('auth:api')->get('/user', function (Request $request) {
     //$user = \Auth::guard('api')->user();

@@ -24,6 +24,14 @@ $api->version('v1', ['namespace' => 'App\Api\Controllers\V1'/*, 'middleware'=>'a
         $api->get('mail', 'MailController@sendEmail');
     });
     
+    $api->group(['namespace' => 'WeChat','prefix' => 'wechat'], function(Router $api){
+        
+        $api->any('/', 'WeChatController@serve');
+        $api->get('menu/create', 'WeChatController@menu');
+        $api->post('/message/custom/send', 'WeChatController@serve');
+        $api->post('/media/upload', 'WeChatController@upload');
+    });
+    
     /*require __DIR__ . '/../common/user.php';
     require __DIR__ . '/../common/post.php';*/
     
