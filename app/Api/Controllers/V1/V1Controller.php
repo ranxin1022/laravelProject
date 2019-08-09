@@ -28,7 +28,7 @@
          *         description="laravel项目API接口文档",
          *         @SWG\Contact(
          *             name="laravelProject",
-         *             email="rachel.ran@jfz.com"
+         *             email="346150054@qq.com"
          *         )
          *     ),
          * )
